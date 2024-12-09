@@ -5,6 +5,10 @@ VisualStudioVersion = 17.12.35521.163 d17.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "sftp-integration", "sftp-integration\sftp-integration.csproj", "{2B64EF56-7D29-4782-8F31-9FAFF07D2DD0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "rabbit-listener", "rabbit-listener\rabbit-listener.csproj", "{68AEA99C-E7DB-45EE-8CAB-827D54B43016}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "common", "common\common.csproj", "{00FDC7E3-7993-4090-9735-81D69E2B29E7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{2B64EF56-7D29-4782-8F31-9FAFF07D2DD0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2B64EF56-7D29-4782-8F31-9FAFF07D2DD0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2B64EF56-7D29-4782-8F31-9FAFF07D2DD0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{68AEA99C-E7DB-45EE-8CAB-827D54B43016}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{68AEA99C-E7DB-45EE-8CAB-827D54B43016}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{68AEA99C-E7DB-45EE-8CAB-827D54B43016}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{68AEA99C-E7DB-45EE-8CAB-827D54B43016}.Release|Any CPU.Build.0 = Release|Any CPU
+		{00FDC7E3-7993-4090-9735-81D69E2B29E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{00FDC7E3-7993-4090-9735-81D69E2B29E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{00FDC7E3-7993-4090-9735-81D69E2B29E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{00FDC7E3-7993-4090-9735-81D69E2B29E7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
