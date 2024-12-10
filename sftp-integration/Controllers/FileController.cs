@@ -36,7 +36,10 @@ public class FileController : ControllerBase
 			}
 
 			string fileExtension = Path.GetExtension(file.FileName);
-			PublishToQueue("sftp_queue", fileContent, fileExtension);
+			string fileNameWithoutExtension = Path.GetFileNameWithoutExtension(file.FileName);
+
+			// Передаем имя файла
+			PublishToQueue("sftp_queue", fileContent, fileExtension, fileNameWithoutExtension);
 
 			return Ok("Файл успешно загружен и передан на обработку.");
 		}
@@ -54,7 +57,7 @@ public class FileController : ControllerBase
 		return BitConverter.ToString(hashBytes).Replace("-", "").ToLower();
 	}
 
-	private void PublishToQueue(string queueName, byte[] fileContent, string fileExtension)
+	private void PublishToQueue(string queueName, byte[] fileContent, string fileExtension, string fileNameWithoutExtension)
 	{
 		using var connection = _connectionFactory.CreateConnection();
 		using var channel = connection.CreateModel();
@@ -64,10 +67,11 @@ public class FileController : ControllerBase
 			channel.QueueDeclare(queueName, durable: true, exclusive: false, autoDelete: false, arguments: null);
 
 			// Создаем объект с метаинформацией и содержимым файла
-			var message = new
+			var message = new FileMessage
 			{
 				FileContent = fileContent,  // Бинарное содержимое файла
-				FileExtension = fileExtension
+				FileExtension = fileExtension,
+				FileName = fileNameWithoutExtension // Передаем имя файла
 			};
 
 			// Сериализуем объект в JSON
@@ -84,5 +88,13 @@ public class FileController : ControllerBase
 		}
 
 		_logger.LogInformation("Сообщение добавлено в очередь {QueueName}", queueName);
+	}
+
+	// Модель сообщения
+	public class FileMessage
+	{
+		public byte[] FileContent { get; set; } // Бинарное содержимое файла
+		public string FileExtension { get; set; } // Расширение файла
+		public string FileName { get; set; } // Имя файла
 	}
 }
